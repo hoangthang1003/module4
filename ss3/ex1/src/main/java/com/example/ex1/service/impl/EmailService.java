@@ -23,4 +23,8 @@ public class EmailService implements IEmailService {
     public Email email() {
         return emailRepository.email();
     }
+
+    public void updateEmail(Email email) {
+        emailRepository.updateEmail(email);
+    }
 }
