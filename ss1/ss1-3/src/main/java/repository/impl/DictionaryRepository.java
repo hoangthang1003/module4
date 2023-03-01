@@ -1,10 +1,11 @@
 package repository.impl;
 
+import org.springframework.stereotype.Repository;
 import repository.IDictionaryRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Repository
 public class DictionaryRepository implements IDictionaryRepository {
     private static final List<String> englishList = new ArrayList<>();
     private static final List<String> vietnameseList = new ArrayList<>();

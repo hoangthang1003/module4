@@ -18,5 +18,5 @@ public class SpicesController {
     public String getSpices(@RequestParam String spices, Model model) {
         model.addAttribute("spices", spices);
         return "/index";
-    }
+        }
 }

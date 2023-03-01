@@ -1,13 +1,16 @@
 package service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import repository.IDictionaryRepository;
 import repository.impl.DictionaryRepository;
 import service.IDictionaryService;
 
 import java.util.List;
-
+@Service
 public class DictionaryService implements IDictionaryService {
-    IDictionaryRepository repository = new DictionaryRepository();
+    @Autowired
+     private IDictionaryRepository repository = new DictionaryRepository();
     @Override
     public List<String> getEngList() {
         return repository.getEngList();

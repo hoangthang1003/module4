@@ -6,7 +6,10 @@ import java.util.List;
 
 public interface IEmailService {
     List<String> languagesList();
+
     List<Integer> pageSize();
+
     Email email();
+
     void updateEmail(Email email1);
 }

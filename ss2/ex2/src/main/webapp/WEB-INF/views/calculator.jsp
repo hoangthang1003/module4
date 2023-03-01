@@ -16,14 +16,14 @@
 <h1 class="text-center" style="color: cornflowerblue">Calculator</h1>
 <div class="text-center">
     <form action="/calculator" method="post">
-            <p><input type="text" name="num1"></p>
-            <p><input type="text" name="num2"></p>
+            <p><input type="text" name="firstNumber"></p>
+            <p><input type="text" name="secondNumber"></p>
             <select class="form-select" name="method" aria-label="Default select example">
                 <option selected>Open this select menu</option>
                 <option  value="addition">Addition(+)</option>
                 <option value="subtraction">Subtraction(-)</option>
                 <option value="multiplication">Multiplication(*)</option>
-                <option  value="division">Division(/)</option>
+                <optiqon  value="division">Division(/)</optiqon>
             </select>
             <button type="submit" class="btn btn-primary">Save</button>
     </form>

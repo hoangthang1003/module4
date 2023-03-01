@@ -12,7 +12,7 @@ public class EmailRepository implements IEmailRepository {
     private static Email email;
 
     static {
-        email= new Email("English", 25, false, "Thor, King, Asgard");
+        email = new Email("English", 25, false, "Thor, King, Asgard");
 
         languagesList = new ArrayList<>();
         languagesList.add("English");
@@ -25,7 +25,7 @@ public class EmailRepository implements IEmailRepository {
         pageSize.add(15);
         pageSize.add(25);
         pageSize.add(50);
-        pageSize.add(100 );
+        pageSize.add(100);
     }
 
     @Override
