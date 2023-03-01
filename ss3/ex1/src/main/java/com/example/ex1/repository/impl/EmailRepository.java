@@ -12,7 +12,7 @@ public class EmailRepository implements IEmailRepository {
     private static Email email;
 
     static {
-        email= new Email(1,"English", 25, false, "Thor, King, Asgard");
+        email= new Email("English", 25, false, "Thor, King, Asgard");
 
         languagesList = new ArrayList<>();
         languagesList.add("English");
@@ -44,11 +44,11 @@ public class EmailRepository implements IEmailRepository {
     }
 
     @Override
-    public void updateEmail(Email email) {
-        email.setLanguages(email.getLanguages());
-        email.setPageSize(email.getPageSize());
-        email.setSpamsFilter(email.isSpamsFilter());
-        email.setSignature(email.getSignature());
+    public void updateEmail(Email email1) {
+        email.setLanguages(email1.getLanguages());
+        email.setPageSize(email1.getPageSize());
+        email.setSpamsFilter(email1.isSpamsFilter());
+        email.setSignature(email1.getSignature());
     }
 
 

@@ -1,7 +1,7 @@
 package com.example.ex1.model;
 
 public class Email {
-    private int id;
+
     private String languages;
     private int pageSize;
     private boolean spamsFilter;
@@ -10,21 +10,14 @@ public class Email {
     public Email() {
     }
 
-    public Email(int id, String languages, int pageSize, boolean spamsFilter, String signature) {
-        this.id = id;
+    public Email(String languages, int pageSize, boolean spamsFilter, String signature) {
+
         this.languages = languages;
         this.pageSize = pageSize;
         this.spamsFilter = spamsFilter;
         this.signature = signature;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getLanguages() {
         return languages;

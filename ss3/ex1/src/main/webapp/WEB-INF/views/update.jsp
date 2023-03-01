@@ -15,17 +15,31 @@
 </head>
 <body>
 <h1>Settings</h1>
-<form:form modelAttribute="email" action="/email/updateEmail" method="post">
-  <label>Languages</label>
-  <form:select path="languages" items="${languages}"/>
-  <label>Page Size : show</label>
-  <form:select path="pageSize" items="${pageSize}"/>
-  <label for="defaultCheck">Spam Filter</label>
-  <form:checkbox path="spamsFilter" value="${email.spamFilter}" id="defaultCheck"/>
-  <label>Signature</label>
-  <form:textarea path="signature"/>
-  <button type="button"><a href="/email">Cancel</a></button>
-  <button type="submit"><a href="update.jsp">Update</a></button>
+<h1 class="mb-3">Setting</h1>
+<form:form modelAttribute="email" action="/updateEmail" method="post">
+  <div class="form-group">
+    <label>Languages</label>
+    <form:select path="languages" items="${language}"/>
+  </div>
+  <div class="form-group mt-2">
+    <label>Page Size: show </label>
+    <form:select path="pageSize" items="${pageSize}"/>
+    <span> emails per page</span>
+  </div>
+  <div class="form-check mt-2">
+    <label class="form-check-label" for="defaultCheck1">
+      Spam Filter
+    </label>
+    <form:checkbox path="spamsFilter" class="form-check-input" value="${email.spamsFilter}"
+                   id="defaultCheck1"/>
+  </div>
+  <div class="form-group mt-3">
+    <label>Signature</label>
+    <form:textarea path="signature"/>
+  </div>
+  <button class="btn btn-danger my-3" type="button"><a class="text-white" style="text-decoration: none"
+                                                       href="/email">Cancel</a></button>
+  <button class="btn btn-primary my-3" type="submit">Update</button>
 </form:form>
 
 

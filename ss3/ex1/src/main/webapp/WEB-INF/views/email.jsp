@@ -26,7 +26,7 @@
         <div>Page size: Show ${email.pageSize} emails per page</div>
         <div>Spam filter: ${email.spamsFilter}</div>
         <div>Signature: ${email.signature}</div>
-        <button>
+        <button class="btn btn-danger">
             <a href="/updateForm">Update</a>
         </button>
     </div>

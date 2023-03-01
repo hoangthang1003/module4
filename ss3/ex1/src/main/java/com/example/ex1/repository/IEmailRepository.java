@@ -8,5 +8,5 @@ public interface IEmailRepository {
     List<String> languagesList();
     List<Integer> pageSize();
         Email email();
-        void updateEmail(Email email);
+        void updateEmail(Email email1);
 }
