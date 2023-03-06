@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
 <head>
     <title>Blog list</title>
     <!-- Required meta tags -->
@@ -57,7 +56,7 @@
             </div>
             <form action="/blog/delete/{id}">
                 <div class="modal-body">
-                    <input type="hidden" name="deleteId" id="deleteid">
+                    <input type="hidden" name="deleteId" id="deleteId">
                     <span>Bạn múa xoá blog này </span><span id="deleteBlog"></span> ?
                 </div>
                 <div class="modal-footer">
@@ -81,7 +80,7 @@
         crossorigin="anonymous"></script>
 <script>
     function getProductInfo(id, title) {
-        document.getElementById("deleteid").value = id;
+        document.getElementById("deleteId").value = id;
         document.getElementById("deleteBlog").innerText = title;
     }
 </script>
