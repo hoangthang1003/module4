@@ -26,7 +26,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="blog, iterStat: ${blogList}">
+    <tr th:each="blog, iterStat: ${blogPage}">
         <td th:text="${iterStat.count}"></td>
         <td th:text="${blog.getTitle()}"></td>
         <td th:text="${blog.getContent()}"></td>
@@ -36,36 +36,27 @@
         </td>
         <td>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#modelId"
-                    th:attr="onclick=|getBlogInfo('${blog.id}', '${blog.title}')|">
-                Delete
-            </button>
+            <a th:href="@{/blog/delete/{id}(id = ${blog.getId()})}" class="btn btn-danger">Delete</a>
         </td>
     </tr>
     </tbody>
 </table>
-<!-- Modal -->
-<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form action="/blog/delete/{id}">
-                <div class="modal-body">
-                    <input type="hidden" name="deleteId" id="deleteId">
-                    <span>Bạn múa xoá blog này </span><span id="deleteBlog"></span> ?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </div>
-            </form>
-        </div>
-    </div>
+<div style="display: flex">
+    <a class="page-item" th:if="${blogPage.hasPrevious()}"
+       th:href="@{/blog(page=${blogPage.number - 1},title = ${freeText})}">
+        Previous
+    </a>
+
+    <a class="page-item" th:each="p : ${pages}" th:if="${p != blogPage.number}"
+       th:href="@{/blog(page = ${p}, name = ${freeText})}" th:text="${p+1}">
+    </a>
+
+    <a class="page-item" th:if="${blogPage.hasNext()}"
+       th:href="@{/blog(page = ${blogPage.number + 1}, name = ${freeText})}">
+        Next
+    </a>
+
+
 </div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
