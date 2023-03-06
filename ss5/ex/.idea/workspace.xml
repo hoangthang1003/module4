@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2ff76f99-4493-4bec-82da-09b583c31b66" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../ss4/ex/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../customer-management" beforeDir="false" afterPath="$PROJECT_DIR$/../../customer-management" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring-customer-management-thymleaf" beforeDir="false" afterPath="$PROJECT_DIR$/../../spring-customer-management-thymleaf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss3/ex1/src/main/java/com/example/ex1/repository/impl/EmailRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss3/ex1/src/main/java/com/example/ex1/repository/impl/EmailRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss3/ex1/src/main/java/com/example/ex1/service/impl/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss3/ex1/src/main/java/com/example/ex1/service/impl/EmailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss4/ex/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss4/ex/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss4/ex/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss4/ex/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss4/ex/src/main/java/com/example/SessionUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss4/ex/src/main/java/com/example/SessionUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss4/ex/src/main/java/com/example/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss4/ex/src/main/java/com/example/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss4/ex/src/main/java/com/example/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss4/ex/src/main/java/com/example/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss4/ex/src/main/java/com/example/repository/impl/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss4/ex/src/main/java/com/example/repository/impl/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss4/ex/src/main/resources/hibernate.conf.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss4/ex/src/main/resources/hibernate.conf.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss4/ex/src/main/webapp/WEB-INF/views/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss4/ex/src/main/webapp/WEB-INF/views/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss4/ex1/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss4/ex1/.idea/gradle.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="workspaceImportEnabled" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2MUpnT5Ce0FkGdT6qiS7MT09j3I" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/module4/ss6/ex",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "spring.configuration.checksum": "8780cc31e7842ee9ac5d9277fd795310",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\module4\ss5\ex\src\main\java\com\example\configuration" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="ex1" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="ex.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.blog.BlogAppApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2ff76f99-4493-4bec-82da-09b583c31b66" name="Changes" comment="" />
+      <created>1677832184501</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1677832184501</updated>
+      <workItem from="1677832185845" duration="2216000" />
+      <workItem from="1677835171632" duration="2001000" />
+      <workItem from="1677850520819" duration="1112000" />
+      <workItem from="1677851639416" duration="91000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

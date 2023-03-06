@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmailRepository implements IEmailRepository {
+
     private static List<String> languagesList;
     private static List<Integer> pageSize;
     private static Email email;

@@ -7,6 +7,7 @@ import com.example.ex1.service.IEmailService;
 import java.util.List;
 
 public class EmailService implements IEmailService {
+
     private final EmailRepository emailRepository = new EmailRepository();
 
     @Override

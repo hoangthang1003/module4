@@ -1,3 +1,4 @@
+package com.example;
 
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
