@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/user/create" method="post" th:object="${user}">
+    <table>
+        <tr>
+            <th>ID</th>
+            <td>
+                <input type="text" th:field="*{id}">
+            </td>
+        </tr>
+        <tr>
+            <th>First Name</th>
+            <td>
+                <input type="text" th:field="*{firstName}">
+            </td>
+        </tr>
+        <tr>
+            <th>Last name</th>
+            <td>
+                <input type="text" th:field="*{lastName}">
+            </td>
+            <th>Phone Number</th>
+            <td>
+                <input type="text" th:field="*{phoneNumber}">
+            </td>
+            <th>Age</th>
+            <td>
+                <input type="text" th:field="*{age}">
+            </td>
+
+            <th>Email</th>
+            <td>
+                <input type="text" th:field="*{email}">
+            </td>
+        </tr>
+    </table>
+    <div>
+        <a class="btn btn-primary" href="/list">Back</a>
+        <input type="submit" value="Create" class="btn btn-secondary">
+    </div>
+</form>
+</body>
+</html>
