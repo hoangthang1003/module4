@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'war'
     id 'org.springframework.boot' version '2.7.10-SNAPSHOT'
     id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 }
@@ -19,8 +20,13 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     runtimeOnly 'com.mysql:mysql-connector-j'
-    runtimeOnly 'org.hsqldb:hsqldb'
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // Validation dependencies
+    implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+    implementation group: 'org.hibernate', name: 'hibernate-validator', version: '6.0.10.Final'
+
 }
 
 tasks.named('test') {
