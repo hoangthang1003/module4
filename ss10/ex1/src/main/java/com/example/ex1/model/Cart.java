@@ -3,6 +3,8 @@ package com.example.ex1.model;
 import java.util.HashMap;
 import java.util.Map;
 
+
+
 public class Cart {
     private Map<Product,Integer> products = new HashMap<>();
 
