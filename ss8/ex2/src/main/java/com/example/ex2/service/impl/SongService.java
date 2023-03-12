@@ -12,7 +12,7 @@ import java.util.Optional;
 public class SongService implements ISongService {
 
     @Autowired
-    ISongRepository songRepository;
+    private ISongRepository songRepository;
 
 
     @Override
