@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    th, td {
+      border: 1px solid black;
+    }
+  </style>
+  <title>Information blog</title>
+</head>
+<body>
+
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Content</th>
+    <th>Author</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:object="${blogInform}">
+    <td th:text="${blogInform.id}"></td>
+    <td th:text="${blogInform.title}"></td>
+    <td th:text="${blogInform.content}"></td>
+    <td th:text="${blogInform.author}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

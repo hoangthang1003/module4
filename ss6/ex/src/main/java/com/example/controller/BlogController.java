@@ -62,4 +62,10 @@ public class BlogController {
         iBlogService.delete(id);
         return "redirect:/blog";
     }
+    @GetMapping("/inform/{id}")
+    public String getInform(@PathVariable Integer id, Model model) {
+        model.addAttribute("blogInform", iBlogService.findById(id));
+//
+        return "/detail";
+    }
 }
