@@ -1,7 +1,7 @@
 package com.example.ex.controller;
 
 import com.example.ex.model.User;
-import com.example.ex.model.dto.UserDTO;
+import com.example.ex.dto.UserDTO;
 import com.example.ex.service.IUserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
