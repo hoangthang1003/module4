@@ -32,57 +32,47 @@ public class ProductController {
 
     @GetMapping("/add/{id}")
     public String addToCart(@PathVariable Long id, @ModelAttribute Cart cart, @RequestParam("action") String action) {
-        Optional<Product> productOptional = productService.findById(id);
+        Optional<Product> productOptional = Optional.ofNullable(productService.findId(id));
+
+        cart.addProduct(productOptional.get());
+        return "redirect:/shop";
+    }
+
+    @GetMapping("/minus/{id}")
+    public String minusToCart(@PathVariable Long id, @ModelAttribute Cart cart, @RequestParam("action") String action) {
+        Optional<Product> productOptional = Optional.ofNullable(productService.findId(id));
         if (!productOptional.isPresent()) {
             return "/error";
         }
         if (action.equals("show")) {
-            cart.addProduct(productOptional.get());
+            cart.minusProduct(productOptional.get());
+            return "redirect:/shopping-cart";
+        }
+        cart.minusProduct(productOptional.get());
+        return "redirect:/shop";
+    }
+
+    @GetMapping("/{id}")
+    public String detail(@PathVariable Long id, Model model, @ModelAttribute Product product) {
+        model.addAttribute("product", productService.findId(id));
+        return "detail";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteToCart(@PathVariable long id,
+                               @ModelAttribute Cart cart,
+                               @RequestParam("action") String action) {
+        Optional<Product> productOptional = Optional.ofNullable(productService.findId(id));
+        if (!productOptional.isPresent()) {
+            return "/error";
+        }
+        if (action.equals("show")) {
+            cart.deleteProduct(productOptional.get());
             return "redirect:/shopping-cart";
         }
         cart.addProduct(productOptional.get());
         return "redirect:/shop";
     }
 
-//    @GetMapping("/minus/{id}")
-//    public String minusToCart(@PathVariable Long id, @ModelAttribute Cart cart, @RequestParam("action") String action) {
-//        Optional<Product> productOptional = productService.findById(id);
-//        if (!productOptional.isPresent()) {
-//            return "/error.404";
-//        }
-//        if (action.equals("show")) {
-//            cart.minusProduct(productOptional.get());
-//            return "redirect:/shopping-cart";
-//        }
-//        cart.minusProduct(productOptional.get());
-//        return "redirect:/shop";
-//    }
-//
-    @GetMapping("/{id}")
-    public String detail(@PathVariable Long id, Model model, @ModelAttribute Product product){
-        model.addAttribute("product",productService.findById(id));
-        return "/detail";
-    }
-//
-//    @GetMapping("/delete/{id}")
-//    public String deleteToCart(@PathVariable long id,
-//                               @ModelAttribute Cart cart,
-//                               @RequestParam("action") String action) {
-//        Optional<Product> productOptional = productService.findById(id);
-//        if (!productOptional.isPresent()) {
-//            return "/error.404";
-//        }
-//        if (action.equals("show")) {
-//            cart.delete(productOptional.get());
-//            return "redirect:/shopping-cart";
-//        }
-//        cart.addProduct(productOptional.get());
-//        return "redirect:/shop";
-//    }
-//
-//    @GetMapping("/pay/")
-//    public String payToCart(@ModelAttribute Cart cart) {
-//        cart.deleteAll();
-//        return "redirect:/shopping-cart";
-//    }
+
 }

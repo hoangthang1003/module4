@@ -1,6 +1,5 @@
 package com.example.ex1.controller;
 
-import com.example.ex1.model.Cart;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -8,7 +7,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class CartController {
+public class Cart {
 
     @ModelAttribute("cart")
     public Cart setupCart(){

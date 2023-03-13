@@ -1,6 +1,9 @@
 package com.example.ex1.model;
 
+
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "book")
@@ -8,10 +11,16 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String title;
-    private Integer quantity;
-    private Integer price;
-    private String code;
+    private String name;
+    private Long quantity;
+
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            name = "order_book",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "order_id"))
+    List<Order> orderList;
+
 
     public Book() {
     }
@@ -24,35 +33,27 @@ public class Book {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Integer getQuantity() {
+    public Long getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(Long quantity) {
         this.quantity = quantity;
     }
 
-    public Integer getPrice() {
-        return price;
+    public List<Order> getOrderList() {
+        return orderList;
     }
 
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
     }
 }

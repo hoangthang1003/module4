@@ -9,6 +9,9 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
+    private String panelUrl;
+
     private double price;
     private String description;
 
@@ -19,6 +22,14 @@ public class Product {
         this.name = name;
         this.price = price;
         this.description = description;
+    }
+
+    public String getPanelUrl() {
+        return panelUrl;
+    }
+
+    public void setPanelUrl(String panelUrl) {
+        this.panelUrl = panelUrl;
     }
 
     public Long getId() {

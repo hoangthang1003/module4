@@ -47,6 +47,16 @@ public class Cart {
         }
     }
 
+    public void minusProduct(Product product){
+        if (!checkItemInCart(product)){
+            products.put(product,1);
+        } else {
+            Map.Entry<Product, Integer> itemEntry = selectItemInCart(product);
+            Integer newQuantity = itemEntry.getValue() - 1;
+            products.replace(itemEntry.getKey(),newQuantity);
+        }
+    }
+
     public Integer countProductQuantity(){
         Integer productQuantity = 0;
         for (Map.Entry<Product, Integer> entry : products.entrySet()) {
@@ -67,5 +77,20 @@ public class Cart {
         return payment;
     }
 
+
+    public void deleteProduct(Product product) {
+        if (!checkItemInCart(product)){
+            products.put(product,1);
+        }else {
+            Map.Entry<Product,Integer> itemEntry = selectItemInCart(product);
+
+            products.remove(itemEntry.getKey());
+
+        }
+    }
+
+    public void deleteAll(){
+        products.clear();
+    }
 
 }

@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class BlogService implements IBlogService {
     @Autowired
-    IBlogRepository repository;
+    private IBlogRepository repository;
 
     @Override
     public Page<Blog> getAll(String name,Pageable pageable) {
