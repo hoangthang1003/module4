@@ -31,11 +31,11 @@ public class ProductController {
     }
 
     @GetMapping("/add/{id}")
-    public String addToCart(@PathVariable Long id, @ModelAttribute Cart cart, @RequestParam("action") String action) {
-        Optional<Product> productOptional = Optional.ofNullable(productService.findId(id));
+    public String addToCart(@PathVariable Long id, @ModelAttribute("cart") Cart cart, @RequestParam("action") String action) {
+        Product product = productService.findId(id);
 
-        cart.addProduct(productOptional.get());
-        return "redirect:/shop";
+        cart.addProduct(product);
+        return "redirect:/shopping-cart";
     }
 
     @GetMapping("/minus/{id}")
