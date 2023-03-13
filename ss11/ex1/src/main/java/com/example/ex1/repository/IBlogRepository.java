@@ -10,7 +10,8 @@ import java.awt.print.Pageable;
 @Repository
 public interface IBlogRepository extends JpaRepository<Blog, Integer> {
 
-    Page<Blog> findBlogByNameContaining(String name, Pageable pageable);
 
     Page<Blog> findBlogByCategory_Id(Integer id, Pageable pageable);
+
+    Page<Blog> findBlogByNameContaining(String name, org.springframework.data.domain.Pageable pageable);
 }

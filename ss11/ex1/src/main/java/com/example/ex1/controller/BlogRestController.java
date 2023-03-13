@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/rest/blogs")
+@RequestMapping("/blogs")
 public class BlogRestController {
     @Autowired
     private BlogService iBlogService;
@@ -34,7 +34,7 @@ public class BlogRestController {
     @GetMapping("")
     public String showList(Model model, @RequestParam(required = false, defaultValue = "") String name,
                            @PageableDefault(size = 3) Pageable pageable) {
-        return this.iBlogService.getAll(name, pageable).toString();
+        return iBlogService.getAll(name,pageable);
     }
 
 
@@ -47,7 +47,7 @@ public class BlogRestController {
 
     //    Xem danh sách các bài viết của một category
 
-    @GetMapping("/category{id}")
+    @GetMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
     public Set<Blog> getById(@PathVariable int id) {
         Category category = this.iCategoryService.getCategoryByID(id);

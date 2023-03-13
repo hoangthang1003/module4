@@ -9,6 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import org.springframework.data.domain.Pageable;
+
 import java.util.List;
 @Service
 public class BlogService implements IBlogService {
@@ -17,7 +19,7 @@ public class BlogService implements IBlogService {
 
     @Override
     public Page<Blog> getAll(String name,Pageable pageable) {
-        return repository.findBlogByNameContaining(name, (java.awt.print.Pageable) pageable);
+        return repository.findBlogByNameContaining(name,  pageable);
     }
 
     @Override
