@@ -21,36 +21,29 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-@RestController
-@RequestMapping("/blogs")
-public class BlogRestController {
-    @Autowired
-    private BlogService iBlogService;
 
+
+@RestController
+@RequestMapping("/blog")
+@CrossOrigin("*")
+public class BlogRestController {
+    //    Xem danh sách các bài viết
     @Autowired
-    private CategoryService iCategoryService;
+    private IBlogService blogService;
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("")
-    public String showList(Model model, @RequestParam(required = false, defaultValue = "") String name,
-                           @PageableDefault(size = 3) Pageable pageable) {
-        return iBlogService.getAll(name,pageable);
+    public Page<Blog> getAll(
+            @RequestParam(name = "name",required = false,defaultValue = "") String name,
+            @PageableDefault(size = 3)Pageable pageable){
+        return this.blogService.getAll(name, pageable);
+
     }
 
-
-
-    @GetMapping("/category")
+    //    Xem chi tiết một bài viết
     @ResponseStatus(HttpStatus.OK)
-    List<Category> findAll() {
-        return this.iCategoryService.getAllCategory();
-    }
-
-    //    Xem danh sách các bài viết của một category
-
-    @GetMapping("{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public Set<Blog> getById(@PathVariable int id) {
-        Category category = this.iCategoryService.getCategoryByID(id);
-        return category.getBlogs();
+    @GetMapping("/{id}")
+    public Blog findById(@PathVariable int id){
+        return this.blogService.getByID(id);
     }
 }

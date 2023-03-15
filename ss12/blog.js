@@ -1,53 +1,49 @@
-function loadProducts(page,append){
-    let search= document.getElementById("idSearch").value;
+function loadProducts(append){
+    // let search= document.getElementById("idSearch").value;
     $.ajax({
         type: "GET",
-        url: `http://localhost:8080/blog?page=${page ? page : "0"}&tittle=` + search,
+        url: `http://localhost:8080/blog`,
         headers: {
             "Content-Type": "application/json",
         },
-        success: function(data){
+        success: (data) => {
             renderProducts(data.content,append);
-            renderLoadMoreButton(data);
+            // renderLoadMoreButton(data);
         },
-        error: function(error){
+        error: (error) => {
             console.log(error);
         },
     });
 }
-$(document).ready(function(){
-    loadProducts();
-});
-function renderProducts(products,append){
+$(document).ready(() => loadProducts());
+
+function renderProducts(blogs,append){
     let elements = "";
-    for(let product of products){
+    for(let blog of blogs){
         elements += `
-        <div class="card" style="width: 18rem;">
-         <img src="${product.img}" class="card-img-top" alt="...">
-            <div class="card-body">
-         <h5 class="card-title">${product.tittle}</h5>
-            <p class="card-text">${product.content}</p>
+        <div class="card">
+      
+     
+         <h5 class="card-title">${blog.name}</h5>
+         <h5 class="card-title">${blog.content}</h5>
+            <p class="card-text">${blog.author}</p>
             <a href="#" class="btn btn-primary">Add New</a>
         </div>
         </div>
         `;
     }
-    if(append){
-        $("#listProducts").append(elements);
-    }else{
-        $("#listProducts").html(elements);
-    }
+    append ? $("#listProducts").append(elements) : $("#listProducts").html(elements);
 }
 
 function loadMore(nextPage){
     loadProducts(nextPage,true);
 }
-function renderLoadMoreButton(productPageData){
-    if(productPageData.number < productPageData.totalPages-1){
+function renderLoadMoreButton(blogPageData){
+    if(blogPageData.number < blogPageData.totalPages-1){
         $("#loadMoreContainer").html(
             `
         <button type="button" class="btn btn-dark"
-         onclick="loadMore(${productPageData.number + 1})">
+         onclick="loadMore(${blogPageData.number + 1})">
          Xem thêm...</button>
          `
         );
