@@ -1,53 +1,45 @@
-function loadProducts(append){
-    // let search= document.getElementById("idSearch").value;
+function loadBlogs(append) {
+    let search= document.getElementById("idSearch").value;
+
     $.ajax({
         type: "GET",
-        url: `http://localhost:8080/blog`,
-        headers: {
-            "Content-Type": "application/json",
+        url: `http://localhost:8080/blog?author=`+search,
+        header: {
+            "Content-type": "application/JSON",
         },
-        success: (data) => {
-            renderProducts(data.content,append);
-            // renderLoadMoreButton(data);
+        success: function (data) {
+            renderBlogs(data.content, append);
         },
-        error: (error) => {
+        error: function (error) {
             console.log(error);
-        },
+        }
     });
 }
-$(document).ready(() => loadProducts());
 
-function renderProducts(blogs,append){
-    let elements = "";
-    for(let blog of blogs){
-        elements += `
-        <div class="card">
-      
-     
-         <h5 class="card-title">${blog.name}</h5>
-         <h5 class="card-title">${blog.content}</h5>
-            <p class="card-text">${blog.author}</p>
-            <a href="#" class="btn btn-primary">Add New</a>
-        </div>
-        </div>
-        `;
+
+$(document).ready(function () {
+    loadBlogs();
+})
+
+function renderBlogs(blogs, append) {
+    let element = "";
+    for (let blog of blogs) {
+        element += `
+  <div class="card col-sm-3" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">${blog.name}</h5>
+    <p class="card-text">${blog.content}</p>
+    <p class="card-text">${blog.author}</p>
+    <a href="#" class="btn btn-primary">Add</a>
+  </div>
+</div> 
+         `;
     }
-    append ? $("#listProducts").append(elements) : $("#listProducts").html(elements);
-}
 
-function loadMore(nextPage){
-    loadProducts(nextPage,true);
-}
-function renderLoadMoreButton(blogPageData){
-    if(blogPageData.number < blogPageData.totalPages-1){
-        $("#loadMoreContainer").html(
-            `
-        <button type="button" class="btn btn-dark"
-         onclick="loadMore(${blogPageData.number + 1})">
-         Xem thêm...</button>
-         `
-        );
-    }else{
-        $("#loadMoreContainer").remove();
+    if (append) {
+        $("#listBlogs").append(element);
+    } else {
+        $("#listBlogs").html(element);
     }
 }

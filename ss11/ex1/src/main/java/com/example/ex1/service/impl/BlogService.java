@@ -33,4 +33,9 @@ import java.util.List;
             return repository.findAll();
         }
 
+        public static void main(String[] args) {
+
+
+        }
+
 }
