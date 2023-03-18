@@ -1,0 +1,3 @@
+function loadCustomers(append) {
+    $.ajax
+}
