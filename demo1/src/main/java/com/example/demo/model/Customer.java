@@ -19,8 +19,7 @@ public class Customer {
     @JoinColumn(name = "id", referencedColumnName = "customer_type")
     private CustomerType customerType;
 
-    public Customer() {
-    }
+    public Customer(){}
 
     public Customer(long id, String customer, Date dateOfBirth, String img, CustomerType customerType) {
         this.id = id;

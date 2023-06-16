@@ -1,13 +1,14 @@
-function loadCustomers() {
+function loadCustomers(page) {
 
     $.ajax({
         type: "GET",
-        url: `http://localhost:8080/customer`,
+        url: `http://localhost:8080/customer?page=${page ? page : "0"}`,
         header: {
             contentType: 'application/json',
         },
         success: function (data) {
             renderCustomers(data);
+            renderPage(data);
         },
         error: function (error) {
             console.log(error);
@@ -15,12 +16,74 @@ function loadCustomers() {
     });
 }
 
+function movePage(nextPage) {
+    loadCustomers(nextPage);
+}
+
+function renderPage(customers) {
+    let page = "";
+    if (customers.number == customers.totalPages - 1 && customers.number > 0) {
+        page += `
+    <button class="page-item btn btn-primary btn-sm" 
+    onclick="movePage(${customers.number - 1})">
+    Before
+    </button>
+    `
+    }
+    for (let i = 1; i <= customers.totalPages; i++) {
+        let pageItem = $(`<button class="page-item number btn btn-primary btn-sm"
+                      onclick="movePage(${i - 1})">
+                      ${i}
+                      </button>`);
+        if (i === customers.number + 1) {
+            pageItem.addClass("active");
+        } else {
+            pageItem.removeClass("active");
+        }
+        page += pageItem.prop('outerHTML');
+    }
+
+    if (customers.number == 0 && customers.number < customers.totalPages) {
+        page += `
+    <button class="page-item btn btn-primary btn-sm" 
+    onclick="movePage(${customers.number + 1})">
+    Next
+    </button>
+    `
+    }
+    $("#paging").html(page);
+}
+
+
+
+function showById(id) {
+    $.ajax({
+        type:"GET",
+        url:`http://localhost:8080/customer/` + id,
+        header:{
+            contentYpe : 'application/json',
+        },
+        success: function (data) {
+
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    })
+}
+
+
 
 $(document).ready(function () {
     loadCustomers();
     listAllType();
-    createCustomers();
+    showById()
 })
+function renderCustomerById(customer) {
+    let element = "";
+
+
+}
 
 function renderCustomers(customers) {
     let element = "";
@@ -31,18 +94,23 @@ function renderCustomers(customers) {
       <tr>
         <td>${customer.id}</td>
         <td>${customer.customer}</td>
+        <td>${customer.address}</td>
+        <td>${customer.idCard}</td>
+        <td>${customer.phoneNumber}</td>
         <td>${customer.customerType?.name}</td>
         <td>${customer.dateOfBirth}</td>
-<!--        <td><button type="button"-->
-<!--                class="btn btn-primary"-->
-<!--                data-toggle="modal" data-target="#exampleModalCreate"-->
-<!--                >-->
-<!--               Edit-->
-<!--              </button></td>-->
+        <td><button type="button"
+                class="btn btn-primary"
+                data-toggle="modal" data-target="#exampleModalEdit"
+                                onclick="getCustomerInfo('${customer.id}', '${customer.customer}')"
+
+                >
+               Edit
+              </button></td>
         <td><button type="button"
                 class="btn btn-danger"
                 data-toggle="modal" data-target="#exampleModal"
-                onclick="getCustomerInfo(${customer.id}, '${customer.customer}')">
+                onclick="getCustomerInfo('${customer.id}', '${customer.customer}')">
                Xóa
               </button></td>
         
@@ -58,15 +126,15 @@ function renderCustomers(customers) {
 }
 
 function getCustomerInfo(id,name) {
-    document.getElementById("deleteId").value = id;
-    document.getElementById("deleteName").innerText = "Xóa Customer " + name;
+    document.getElementById("id").value = id;
+    document.getElementById("nameCustomer").innerText = "Xóa Customer " + name;
 }
 
 
 $("#delete-customer").submit(
     function (event) {
         event.preventDefault();
-        let id = $("#deleteId").val();
+        let id = $("#id").val();
         deleteCustomer(id);
     });
 
@@ -90,7 +158,7 @@ function deleteCustomer(id) {
 }
 
 
-function createCustomer(name,birth ,img,customerType) {
+function createCustomer(name,address,idCard,phoneNumber,birth ,img,customerType) {
     $.ajax({
         type: "POST",
         url: `http://localhost:8080/customer`,
@@ -102,26 +170,37 @@ function createCustomer(name,birth ,img,customerType) {
             {
                 customer:name,
                 dateOfBirth: birth,
+                address: address,
+                idCard: idCard,
+                phoneNumber: phoneNumber,
                 img: img,
                 customerType: {id:customerType}
             }
         ),
         success: () => {
+            alert("Thêm khách hàng thành công!");
+            $('#modelId').hide();
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').remove();
             loadCustomers()
+
         },
-        error: (error) => {
-            console.log(error);
+        error: () => {
+            alert("lỗi không thêm được");
         }
     })
 }
 
-$('#createCustomerForm').click(() =>{
-    debugger
+$('#createCustomerForm').submit(() =>{
+
     let name = $("#name").val();
+    let address = $("#address").val();
+    let idCard = $("#idCard").val();
+    let phoneNumber = $("#phoneNumber").val();
     let birth = $("#birth").val();
     let img = $("#img").val();
     let customerType = $("#customerType").val();
-    createCustomer(name,birth,img,customerType);
+    createCustomer(name,address,idCard,phoneNumber,birth,img,customerType);
 })
 
 // list all customer type
@@ -143,7 +222,7 @@ const listAllType = () => {
 
 const allCustomerType = (customerType) => {
     let element = `<select id="customerType">`
-    for (let type of customerType){
+    for (let type of customerType) {
         element += `<option value="${type.id}">${type.name}</option>`
     }
     element += `</select>`;
@@ -164,27 +243,5 @@ const allCustomerType = (customerType) => {
 // </div>
 
 
-function createCustomers() {
-    let element1 = "";
-    element1 += `
-   <div class="moda l-body">
-                        <div>
-                            <label>Tên khách hàng</label>
-                            <input type="text" id="name" placeholder="Nhập tên" required>
-                            <label>Ngày sinh</label>
-                            <input  type="text" id="birth" placeholder="Nhập ngày sinh" required>
-                            <label>Img</label>
-                            <input type="text" id="img">
-                            <label>Kiểu khách hàng</label>
-                            <div id="customerTypeForm"></div>
-                        </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                    <button type="submit" class="btn btn-danger" id="createCustomerForm">Save</button>
-                </div>
-                `;
 
-    $("#create-customer").html(element1);
 
-}
